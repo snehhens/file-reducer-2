@@ -32,7 +32,7 @@ export async function processPDF(
   try {
     const pdfjs = await loadPdfJs()
     const data = new Uint8Array(await file.arrayBuffer())
-    const pdf = await pdfjs.getDocument({ data: data.slice() }).promise
+    const pdf = await pdfjs.getDocument({ data: data.slice(), isEvalSupported: false }).promise
     const pageCount = pdf.numPages
 
     // Pick a starting level from how aggressive the target is.
